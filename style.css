@@ -1,0 +1,52 @@
+/******************************************
+COLORS:
+  brown     #422825
+  med green #74A588
+  beige  #D6CCAD
+  peach     #DC9C76
+  coral     #D6655A
+*******************************************/
+
+
+
+
+* {
+  font-family: 'Anonymous Pro', Helvetica, Arial, sans-serif;
+  color: #422825;
+  text-align: center;
+}
+h1 {
+  font-family: 'Montez', cursive;
+  font-size: 5em;
+  color: #D6655A;
+}
+#computer {
+  float: right;
+}
+#player {
+  float: left;
+}
+.wrapper {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+button {
+  background-color: #D6655A;
+  border-radius: 6px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+}
+#player-placeholder, #computer-placeholder {
+  height: 100px;
+  width: 100px;
+  padding: 50px;
+  margin: 50px auto;
+  border: 1px solid gray;
+  border-radius: 10px;  
+  font-size:80px;
+}
