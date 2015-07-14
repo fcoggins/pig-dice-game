@@ -14,7 +14,6 @@ Player.prototype.turn = function(){
         printStatus(this.name + "'s Turn")
     }
     if (result == 1) {
-        result += " bust";
         this.score = 0;
         this.displayTurn(result);
         this.end();
@@ -30,14 +29,15 @@ Player.prototype.turn = function(){
 Player.prototype.displayTurn = function (result) {
     printNumber(result, this.type + "-placeholder");
     printScore(this.score, this.type + "-score");
-}
+};
 
 Player.prototype.win = function(){
     printStatus(this.name + " WINS!!!");
+    clearInterval(timer);
     player.score = 0;
     computer.score = 0;
-    printNumber("", "player-placeholder");
-    printNumber("", "computer-placeholder");
+    printNumber("0", "player-placeholder");
+    printNumber("0", "computer-placeholder");
     printScore("", "player-score");
     printScore("", "computer-score");
     this.type = "player";

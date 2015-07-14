@@ -14,6 +14,7 @@ COLORS:
   font-family: 'Anonymous Pro', Helvetica, Arial, sans-serif;
   color: #422825;
   text-align: center;
+  box-sizing: border-box;
 }
 h1 {
   font-family: 'Montez', cursive;
@@ -42,11 +43,48 @@ button {
   cursor: pointer;
 }
 #player-placeholder, #computer-placeholder {
-  height: 100px;
-  width: 100px;
-  padding: 50px;
+  height: 200px;
+  width: 200px;
   margin: 50px auto;
-  border: 1px solid gray;
-  border-radius: 10px;  
-  font-size:80px;
+  border: 1px solid #D6655A;
+  border-radius: 10px;
+  background-color: #D6CCAD;
+  position: relative; 
+}
+
+/******************************************
+THE DIE
+*******************************************/
+
+.dot {
+  background-color: #DC9C76;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.middle {
+  top: 80px;
+}
+
+.bottom {
+  bottom: 27px;
+}
+
+.right {
+  right: 40px;
+}
+
+.left {
+  left: 40px;
+}
+
+.top {
+  top: 27px;
+}
+
+.center {
+  top: 80;
+  right:80;
 }

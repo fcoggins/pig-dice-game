@@ -2,7 +2,24 @@
 
 function printNumber(number, id) {
   var placeholder = document.getElementById(id);
-  placeholder.innerHTML = number;
+  var dieDisplay = {
+    "0": ' ',
+    "1": '<div class = "dot center"></div>',
+    "2": '<div class = "dot top left"></div><div class = "dot bottom right"></div>',
+    "3": '<div class = "dot top left"></div><div class = "dot center"></div>' + 
+        '<div class = "dot bottom right"></div>',
+    "4": '<div class = "dot top left"></div><div class = "dot top right"></div>' + 
+        '<div class = "dot bottom left"></div><div class = "dot bottom right"></div>',
+    "5": '<div class = "dot top left"></div><div class = "dot top right"></div>' + 
+        '<div class = "dot bottom left"></div><div class = "dot bottom right"></div>' + 
+        '<div class = "dot center"></div>',
+    "6": '<div class = "dot top left"></div><div class = "dot top right"></div>' +
+        '<div class = "dot bottom left"></div><div class = "dot bottom right"></div>' +
+        '<div class = "dot middle left"></div><div class = "dot middle right"></div>'
+  };
+  var numberStr = number.toString();
+  console.log(number, numberStr, dieDisplay[numberStr]);
+  placeholder.innerHTML = dieDisplay[numberStr];
 }
 
 function printScore(currentScore, id) {
