@@ -1,21 +1,31 @@
-function Game() {
+//initialize variables
 
-}
+var timer = null;
+var winning_score = 100;
+var player = null;
+var computer = null;
+var person_name = "Player";
+
+//Player object
 
 function Player() {
     this.score = 0;
 }
 
 Player.prototype.turn = function(){
-    var result = dice.roll();
+
     if (this.type === "player"){
-        printStatus(this.name + "'s turn. Roll or Hold.")
+        printStatus(this.name + "'s turn. Roll or Hold.");
     } else {
-        printStatus(this.name + "'s Turn")
+        printStatus(this.name + "'s Turn");
     }
+    var result = dice.roll();
     if (result == 1) {
         this.score = 0;
         this.displayTurn(result);
+        printStatus(this.name + " busted.");
+        setTimeout(function(){
+        },1000);
         this.end();
     } else {
         this.score += result;
@@ -40,21 +50,23 @@ Player.prototype.win = function(){
     printNumber("0", "computer-placeholder");
     printScore("", "player-score");
     printScore("", "computer-score");
-    this.type = "player";
 };
 
 Player.prototype.stop = function(){
-    printStatus(player.name + "'s Turn. Roll or Hold.");
     clearInterval(timer);
 };
 
 Player.prototype.end = function() {
     if (this.type === "player") {
+        player.stop();
         computer.play();
     } else {
         computer.stop();
+        printStatus(player.name + "'s Turn. Roll or Hold.");
     }
 };
+
+//Person Object inherits from Player
 
 function Person(name) {
     Player.call(this);
@@ -68,6 +80,8 @@ Person.prototype.hold = function(){
     computer.play();
 };
 
+//Computer Object inherits from Player
+
 function Computer() {
     Player.call(this);
     this.type = "computer";
@@ -78,25 +92,32 @@ Computer.prototype = Object.create(Player.prototype);
 
 Computer.prototype.play = function(){
     timer = setInterval(function(){
-        console.log("tick");
         computer.turn();
         var choice = computerChoice.roll();
-        if ( choice === 1) {
-            printStatus("Computer Busted. Roll Dice.");
-            computer.end();
+        if ( choice === 1) {    
+            printStatus("Computer Holds");
+            setTimeout(function(){
+                computer.end();
+        },1000);           
         }
-    }, 1500);  
+    }, 2000);  
 };
 
+//Start the game
 
-var timer = null;
-var winning_score = 20;
-var player = new Person("Florie");
-var computer = new Computer();
+player = new Person(person_name);
+computer = new Computer();
 printStatus(player.name + "'s Turn. Roll to Begin.");
 var rollButton = document.getElementById("roll_button");
 var holdButton = document.getElementById("hold_button");
+var myButton = document.getElementById("my_button");
 printName(player);
+
+//Button functionality
+myButton.onclick = function(){
+    document.getElementById('intro').style.display = "none";
+    document.getElementById('main').style.display =  "block";
+};
 rollButton.onclick = function(){
     player.turn();
 };

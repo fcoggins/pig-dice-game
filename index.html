@@ -5,28 +5,43 @@
     <link href='http://fonts.googleapis.com/css?family=Montez|Anonymous+Pro:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>  
 <body>
-    <div class="wrapper">
-    <h1>Pig</h1>
-    <h2 id="message">Message Placeholder</h2>
-    <section id="player">
-      <h2 id="name"></h2>
-      <div id="player-placeholder">
-      </div>
-      <h2>Score: <span id="player-score"></span></h2>
-      <button id="roll_button">Roll Dice</button>
-      <button id="hold_button">Hold</button>
-      <script src="dice.js"></script>
-      <script src="ui.js"></script>
-    </section>
-    <section id="computer">
-      <h2>Computer</h2>
-      <div id="computer-placeholder">
-      </div>
-      <h2>Score: <span id="computer-score"></span></h2>
-      <script src="pig.js"></script>
-      <script src="dice.js"></script>
-      <script src="ui.js"></script>
-    </section>
-</div>
+    <header>
+        <h1>Pig</h1>
+    </header>
+    <main id = "main">
+        <h2 id="message">Message Placeholder</h2>
+        <section id="player">
+          <h2 id="name"></h2>
+          <div id="player-placeholder">
+          </div>
+          <h2>Score: <span id="player-score"></span></h2>
+          <button id="roll_button">Roll Dice</button>
+          <button id="hold_button">Hold</button>
+          
+        </section>
+        <section id="computer">
+          <h2>Computer</h2>
+          <div id="computer-placeholder">
+          </div>
+          <h2>Score: <span id="computer-score"></span></h2>
+        </section>
+    </main>
+    <div id="intro">
+        <h2>Goal</h2>
+        <p>Be the first player to reach 100 points.</p>
+        <h2>Gameplay</h2>
+        <p>On a turn, a player rolls the die repeatedly until either:</p>
+        <ul>
+            <li>A 1 is rolled</li>
+            <li>The player chooses to hold (stop rolling)</li>
+        </ul>
+        <p>If a 1 is rolled, that player's turn ends and no points are earned.
+            If the player chooses to hold, all of the points rolled during that turn are added to his or her score</p> 
+        <button id="my_button">Continue</button>       
+    </div>
+    <script src="ui.js"></script>
+    <script src="dice.js"></script>
+    <script src="pig.js"></script>
+
 </body>
 </html>

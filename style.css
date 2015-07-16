@@ -2,7 +2,7 @@
 COLORS:
   brown     #422825
   med green #74A588
-  beige  #D6CCAD
+  beige  #D6CCAD rgb(214, 204, 173)
   peach     #DC9C76
   coral     #D6655A
 *******************************************/
@@ -11,15 +11,53 @@ COLORS:
 
 
 * {
+  box-sizing: border-box;
+}
+body {
   font-family: 'Anonymous Pro', Helvetica, Arial, sans-serif;
   color: #422825;
-  text-align: center;
-  box-sizing: border-box;
 }
 h1 {
   font-family: 'Montez', cursive;
   font-size: 5em;
   color: #D6655A;
+}
+header {
+  text-align: center;
+}
+button {
+  background-color: #D6655A;
+  border-radius: 6px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+}
+#intro {
+  width: 60%;
+  margin: auto;
+  background-color: rgba(214, 204, 173, 0.4);
+  border-radius: 6px;
+}
+#intro h2 {
+  text-align: center;
+  padding-top: 0.5em;
+}
+#intro button {
+  width: 100%;
+  margin: auto;
+  margin-top: 3em;
+}
+#intro p {
+  width: 90%;
+  margin: auto;
+}
+
+main {
+  text-align: center;
+  display: none;
 }
 #computer {
   float: right;
@@ -32,16 +70,7 @@ h1 {
   text-align: center;
   margin: auto;
 }
-button {
-  background-color: #D6655A;
-  border-radius: 6px;
-  border: none;
-  color: rgb(255, 255, 255);
-  padding: 10px;
-  text-transform: uppercase;
-  width: 200px;
-  cursor: pointer;
-}
+
 #player-placeholder, #computer-placeholder {
   height: 200px;
   width: 200px;
