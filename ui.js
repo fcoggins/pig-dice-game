@@ -32,3 +32,11 @@ function printName(player) {
 function printStatus(message) {
     document.getElementById("message").innerHTML = message;
 }
+
+function disableButton(id) {
+    document.getElementById(id).disabled = true;
+}
+
+function enableButton(id) {
+    document.getElementById(id).disabled = false;
+}

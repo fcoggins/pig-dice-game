@@ -4,7 +4,7 @@ var winning_score = 100;
 var player = null;
 var computer = null;
 var result = null;
-var person_name = "Player";
+
 
 //Player object
 
@@ -91,12 +91,16 @@ Computer.prototype = Object.create(Player.prototype);
 
 Computer.prototype.end = function() {
     computer.printEndOfTurn();
+    enableButton('roll_button');
+    enableButton('hold_button');
     alert(this.type); 
     alert("players turn");
     printStatus(player.name + "'s Turn. Roll or Hold.");
 };
 
 Computer.prototype.play = function(numRolls){
+    disableButton('roll_button');
+    disableButton('hold_button');
     var choice = computerChoice.roll();
     numRolls += 1;
     if (numRolls === 1){
@@ -113,23 +117,26 @@ Computer.prototype.play = function(numRolls){
     } else {
         alert("Computer busted");
         result = 0;
+        enableButton('roll_button');
+        enableButton('hold_button');
     }
 };
 
 //Start the game
 
-player = new Person(person_name);
-computer = new Computer();
-printStatus(player.name + "'s Turn. Roll to Begin.");
+var myButton = document.getElementById("my_button");
 var rollButton = document.getElementById("roll_button");
 var holdButton = document.getElementById("hold_button");
-var myButton = document.getElementById("my_button");
-printName(player);
 
 //Button functionality
+
 myButton.onclick = function(){
     document.getElementById('intro').style.display = "none";
     document.getElementById('main').style.display =  "block";
+    player = new Person(document.getElementById('person_name').value);
+    computer = new Computer();
+    printStatus(player.name + "'s Turn. Roll to Begin.");
+    printName(player);
 };
 rollButton.onclick = function(){
     player.turn();
