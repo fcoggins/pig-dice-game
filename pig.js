@@ -75,7 +75,8 @@ Person.prototype.end = function(){
     player.printEndOfTurn();
     alert("Computer's turn");
     result = 0;
-    computer.play();
+    var numRolls = 0;
+    computer.play(numRolls);
 }
 
 //Computer Object inherits from Player
@@ -95,20 +96,23 @@ Computer.prototype.end = function() {
     printStatus(player.name + "'s Turn. Roll or Hold.");
 };
 
-Computer.prototype.play = function(){
-    choice = computerChoice.roll();
+Computer.prototype.play = function(numRolls){
+    var choice = computerChoice.roll();
+    numRolls += 1;
+    if (numRolls === 1){
+        choice = 0;
+    }
+    alert("Choice = " + choice);
     if (choice !== 1 && result !== 1){
         computer.turn();
-        computer.play();
+        computer.play(numRolls);
     } else if (choice === 1) {
         alert('Computer Holds');
         computer.end();
         result = 0;
-        choice = 0;
     } else {
         alert("Computer busted");
         result = 0;
-        choice = 0;
     }
 };
 
