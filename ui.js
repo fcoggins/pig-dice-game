@@ -18,7 +18,6 @@ function printNumber(number, id) {
         '<div class = "dot middle left"></div><div class = "dot middle right"></div>'
   };
   var numberStr = number.toString();
-  console.log(number, numberStr, dieDisplay[numberStr]);
   placeholder.innerHTML = dieDisplay[numberStr];
 }
 

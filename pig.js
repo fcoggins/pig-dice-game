@@ -1,15 +1,16 @@
 //initialize variables
 
-var timer = null;
 var winning_score = 100;
 var player = null;
 var computer = null;
+var result = null;
 var person_name = "Player";
 
 //Player object
 
 function Player() {
-    this.score = 0;
+    this.score = 0; //total score
+    this.roll = 0; //turn score
 }
 
 Player.prototype.turn = function(){
@@ -19,52 +20,46 @@ Player.prototype.turn = function(){
     } else {
         printStatus(this.name + "'s Turn");
     }
-    var result = dice.roll();
-    if (result == 1) {
-        this.score = 0;
+    alert ("Roll Dice");
+    result = dice.roll();
+    if (result === 1) {
+        this.roll = 0;
         this.displayTurn(result);
         printStatus(this.name + " busted.");
-        setTimeout(function(){
-        },1000);
+        alert (this.name + 'Busted');
         this.end();
     } else {
-        this.score += result;
+        this.roll += result;
         this.displayTurn(result);
-        if (this.score >= winning_score){
+        if (this.score + this.roll >= winning_score){
             this.win();
         }
+    alert ("result = " + result);
     }
 };
 
 Player.prototype.displayTurn = function (result) {
     printNumber(result, this.type + "-placeholder");
-    printScore(this.score, this.type + "-score");
+    printScore(this.roll, this.type + "-turn-score");
 };
 
 Player.prototype.win = function(){
     printStatus(this.name + " WINS!!!");
-    clearInterval(timer);
-    player.score = 0;
-    computer.score = 0;
     printNumber("0", "player-placeholder");
     printNumber("0", "computer-placeholder");
-    printScore("", "player-score");
-    printScore("", "computer-score");
+    printScore(player.score, "player-total-score");
+    printScore(computer.score, "computer-total-score");
+    printScore(" ", "player-turn-score");
+    printScore(" ", "computer-turn-score");
 };
 
-Player.prototype.stop = function(){
-    clearInterval(timer);
-};
-
-Player.prototype.end = function() {
-    if (this.type === "player") {
-        player.stop();
-        computer.play();
-    } else {
-        computer.stop();
-        printStatus(player.name + "'s Turn. Roll or Hold.");
-    }
-};
+Player.prototype.printEndOfTurn = function(){
+    //result = 0;
+    this.score += this.roll;
+    this.roll = 0;
+    printScore(this.score, this.type + "-total-score");
+    printScore(this.roll, this.type + "-turn-score");
+}
 
 //Person Object inherits from Player
 
@@ -76,9 +71,12 @@ function Person(name) {
 
 Person.prototype = Object.create(Player.prototype);
 
-Person.prototype.hold = function(){
+Person.prototype.end = function(){
+    player.printEndOfTurn();
+    alert("Computer's turn");
+    result = 0;
     computer.play();
-};
+}
 
 //Computer Object inherits from Player
 
@@ -90,17 +88,28 @@ function Computer() {
 
 Computer.prototype = Object.create(Player.prototype);
 
+Computer.prototype.end = function() {
+    computer.printEndOfTurn();
+    alert(this.type); 
+    alert("players turn");
+    printStatus(player.name + "'s Turn. Roll or Hold.");
+};
+
 Computer.prototype.play = function(){
-    timer = setInterval(function(){
+    choice = computerChoice.roll();
+    if (choice !== 1 && result !== 1){
         computer.turn();
-        var choice = computerChoice.roll();
-        if ( choice === 1) {    
-            printStatus("Computer Holds");
-            setTimeout(function(){
-                computer.end();
-        },1000);           
-        }
-    }, 2000);  
+        computer.play();
+    } else if (choice === 1) {
+        alert('Computer Holds');
+        computer.end();
+        result = 0;
+        choice = 0;
+    } else {
+        alert("Computer busted");
+        result = 0;
+        choice = 0;
+    }
 };
 
 //Start the game
@@ -122,5 +131,5 @@ rollButton.onclick = function(){
     player.turn();
 };
 holdButton.onclick = function(){
-    player.hold();
+    player.end();
 };
