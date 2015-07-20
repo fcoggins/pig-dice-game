@@ -1,7 +1,7 @@
 /******************************************
 COLORS:
   brown     #422825
-  med green #74A588
+  med green #74A588 rgb(116, 165, 136)
   beige  #D6CCAD rgb(214, 204, 173)
   peach     #DC9C76
   coral     #D6655A
@@ -25,32 +25,34 @@ h1 {
   margin-bottom: 0.25em;
 }
 h2 {
-  font-family: 'Montez', cursive;
-  font-size: 2em;
-  color: #DC9C76;
-  margin: 0.25em 0;
+  font-size: 1.5em;
+  color: #74A588;
 }
-h3, #message {
+h3 {
   margin: 0.25em 0;
+  font-size: 0.9em;
 }
 header {
   text-align: center;
 }
 button {
   background-color: #D6655A;
-  border-radius: 6px;
-  border: none;
+  border-radius: 50%;
+  border: ;
   color: rgb(255, 255, 255);
   padding: 10px;
   text-transform: uppercase;
-  width: 120px;
+  width: 100px;
   cursor: pointer;
+  border: 3px solid #74A588;
 }
 #intro {
   width: 60%;
   margin: auto;
   background-color: rgba(214, 204, 173, 0.4);
   border-radius: 6px;
+  padding: 0 0.3em 0.1em 0.3em;
+  border: 1px solid rgb(214, 204, 173);
 }
 #intro h2 {
   text-align: center;
@@ -96,9 +98,23 @@ button {
   position: relative; 
 }
 
-/*#computer-status {
-  display: none;
-}*/
+#computer-status {
+  background-color: rgba(116, 165, 136, 0.2);
+  font-weight: bold;
+  font-size: 1em;
+  padding: 1.6em;
+  border-radius: 50px;
+  width: 90%;
+  margin: auto;
+}
+
+#computer-span, #message {
+  color: #74A588;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  display: inline;
+  margin: 1em 0 0 0;
+}
 
 /******************************************
 THE DIE

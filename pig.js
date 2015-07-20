@@ -94,6 +94,8 @@ Computer.prototype.end = function() {
 };
 
 Computer.prototype.play = function(numRolls){
+    disableButton('roll_button');
+    disableButton('hold_button');
     computerRoll = setTimeout(function(){
         var choice = computerChoice.roll();
         numRolls += 1;
@@ -113,7 +115,7 @@ Computer.prototype.play = function(numRolls){
             clearTimeout(computerRoll);
             result = 0;
             computer.end();
-             } else {
+            } else {
             computer.turn();
             computer.play(numRolls);
             }
