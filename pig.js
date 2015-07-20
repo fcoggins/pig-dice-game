@@ -43,7 +43,6 @@ Player.prototype.displayTurn = function (result) {
 
 Player.prototype.win = function(){
     printStatus(this.name + " WINS!!!");
-    //printNumber("0", "player-placeholder");
     printScore(this.score + this.roll, this.type + "-total-score");
     printScore("0", this.type + "-turn-score");
 };
@@ -100,18 +99,23 @@ Computer.prototype.play = function(numRolls){
         if (numRolls === 1){
             choice = 0;
         }
-        if (choice !== 1 && result !== 1){
+        if (choice === 0){
             computer.turn();
             computer.play(numRolls);
-        } else if (choice !== 1) {
-            clearTimeout(computerRoll);
-            result = 0;
-            computer.end();
         } else {
+           if (choice === 1 && result !== 1){
             clearTimeout(computerRoll);
             writeComputerStatus('Computer Holds. ');
             result = 0;
             computer.end();
+            } else if (result === 1){
+            clearTimeout(computerRoll);
+            result = 0;
+            computer.end();
+             } else {
+            computer.turn();
+            computer.play(numRolls);
+            }
         }
     }, 1000);
 };
