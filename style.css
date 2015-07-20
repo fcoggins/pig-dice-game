@@ -14,6 +14,7 @@ COLORS:
   box-sizing: border-box;
 }
 body {
+  margin: 0;
   font-family: 'Anonymous Pro', Helvetica, Arial, sans-serif;
   color: #422825;
 }
@@ -21,6 +22,16 @@ h1 {
   font-family: 'Montez', cursive;
   font-size: 5em;
   color: #D6655A;
+  margin-bottom: 0.25em;
+}
+h2 {
+  font-family: 'Montez', cursive;
+  font-size: 2em;
+  color: #DC9C76;
+  margin: 0.25em 0;
+}
+h3, #message {
+  margin: 0.25em 0;
 }
 header {
   text-align: center;
@@ -32,7 +43,7 @@ button {
   color: rgb(255, 255, 255);
   padding: 10px;
   text-transform: uppercase;
-  width: 200px;
+  width: 120px;
   cursor: pointer;
 }
 #intro {
@@ -55,15 +66,19 @@ button {
   margin: auto;
 }
 
-main {
+#main {
   text-align: center;
   display: none;
+  width: 60%;
+  margin: auto;
 }
 #computer {
   float: right;
+  width: 50%;
 }
 #player {
   float: left;
+  width: 50%;
 }
 .wrapper {
   width: 80%;
@@ -74,12 +89,16 @@ main {
 #player-placeholder, #computer-placeholder {
   height: 200px;
   width: 200px;
-  margin: 50px auto;
+  margin: 10px auto;
   border: 1px solid #D6655A;
   border-radius: 10px;
   background-color: #D6CCAD;
   position: relative; 
 }
+
+/*#computer-status {
+  display: none;
+}*/
 
 /******************************************
 THE DIE

@@ -40,3 +40,16 @@ function disableButton(id) {
 function enableButton(id) {
     document.getElementById(id).disabled = false;
 }
+
+function writeComputerStatus(string){
+    document.getElementById('computer-span').innerHTML = string;
+    showComputerStatus();
+}
+
+function showComputerStatus(){
+    document.getElementById('computer-span').style.display =  "inline";
+}
+
+function hideComputerStatus(){
+   document.getElementById('computer-span').style.display =  "none";
+}
