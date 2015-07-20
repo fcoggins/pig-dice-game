@@ -16,7 +16,7 @@ function Player() {
 
 Player.prototype.turn = function(){
     if (this.type === "player"){
-         printStatus(this.name + "'s turn.");
+        printStatus(this.name + "'s turn.");
     } else {
         printStatus(this.name + "'s turn.");
     }
@@ -45,6 +45,7 @@ Player.prototype.win = function(){
     printStatus(this.name + " WINS!!!");
     printScore(this.score + this.roll, this.type + "-total-score");
     printScore("0", this.type + "-turn-score");
+    reset();
 };
 
 Player.prototype.printEndOfTurn = function(){
@@ -126,6 +127,23 @@ var myButton = document.getElementById("my_button");
 var rollButton = document.getElementById("roll_button");
 var holdButton = document.getElementById("hold_button");
 
+//Reset
+
+function reset(){
+    setTimeout(function(){
+        player.score = 0;
+        player.roll = 0;
+        computer.score = 0;
+        computer.roll = 0;
+        printStatus(player.name + "'s Turn. Roll to Begin.");
+        writeComputerStatus('');
+        printScore(0, "computer-total-score");
+        printScore(0, "player-total-score");
+        printNumber(0, "player-placeholder");
+        printNumber(0, "computer-placeholder");
+    }, 2000);
+}
+
 //Button functionality
 
 myButton.onclick = function(){
@@ -140,7 +158,6 @@ myButton.onclick = function(){
     printName(player);
 };
 rollButton.onclick = function(){
-    // hideComputerStatus();
     player.turn();
 };
 holdButton.onclick = function(){
@@ -149,6 +166,3 @@ holdButton.onclick = function(){
     writeComputerStatus(player.name + " Holds. ");
     player.end();
 };
-// continueButton.onclick = function(){
-//     hideComputerStatus();
-// }
